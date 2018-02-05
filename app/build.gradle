@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.gc.demoapp"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        mock {}
+        prod {}
+    }
+
+    flavorDimensions 'single'
+    sourceSets{
+        main{
+            res.srcDirs = [
+                    'src/main/java/com/gc/demoapp/operations/login/view/res',
+                    'src/main/java/com/gc/demoapp/operations/globalposition/view/res',
+                    'src/main/res'
+            ]
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+//    implementation 'com.android.support:design:26.0.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation project(':navigationinjector')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    // Retrofit 2
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    // OkHttp 3
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'com.squareup.okio:okio:1.13.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    // Gson
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    // Dagger 2
+    implementation 'com.google.dagger:dagger:2.12'
+    kapt 'com.google.dagger:dagger-compiler:2.12'
+    provided 'javax.annotation:jsr250-api:1.0'
+
+    implementation 'com.android.support:design:26.1.0'
+}
