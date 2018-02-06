@@ -1,11 +1,12 @@
 package com.gc.navigationinjector
 
+import android.content.*
 import android.databinding.*
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
 
-abstract class BaseFragment : Fragment(), NavigationManager {
+abstract class BaseFragment : Fragment(), NavigationManager, ViewManager {
 
     class Default : BaseFragment()
 
@@ -19,6 +20,8 @@ abstract class BaseFragment : Fragment(), NavigationManager {
     override fun navigateBack() = navigationManager?.navigateBack()!!
 
     lateinit var viewModel : BaseViewModel
+
+    override lateinit var binding : ViewDataBinding
 
     var navigationManager : NavigationManager? = null
         set(value) {
@@ -35,7 +38,8 @@ abstract class BaseFragment : Fragment(), NavigationManager {
                               savedInstanceState : Bundle?
     ) : View? {
         viewModel.navigationManager = this
-        val binding =  DataBindingUtil.inflate<ViewDataBinding>(inflater!!, viewModel.getLayout(),null,false)
+        viewModel.viewManager = this
+        binding =  DataBindingUtil.inflate<ViewDataBinding>(inflater!!, viewModel.getLayout(),null,false)
         binding.setVariable(BR.viewModel, viewModel)
         return binding.root
     }
@@ -64,6 +68,29 @@ abstract class BaseFragment : Fragment(), NavigationManager {
     }
     //endregion
 
+
+    //region ViewManager implementation
+    override fun getContext() : Context = activity
+
+    override fun getView() : View = binding.root
+
+    override fun showProgressDialog(message : String?) = DialogManager.showProgress(activity)
+
+    override fun hideProgressDialog() = DialogManager.hideProgressDialog(activity)
+
+    override fun showDialog(message : String,
+                    title : String?,
+                    buttonAcceptText : String?,
+                    buttonAcceptListener : DialogInterface.OnClickListener?,
+                    buttonCancelText : String?,
+                    buttonCancelListener : DialogInterface.OnClickListener?) =
+            DialogManager.showDialog(activity,message,title,buttonAcceptText, buttonAcceptListener, buttonCancelText, buttonCancelListener)
+
+    override fun hideDialog() {
+        DialogManager.hideDialog()
+    }
+
+    //endregion
 
 }
 

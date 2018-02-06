@@ -1,5 +1,6 @@
 package com.gc.demoapp
 
+import com.gc.demoapp.injection.AppComponent
 import com.gc.demoapp.repository.IRepository
 import com.gc.navigationinjector.BaseViewModel
 import javax.inject.Inject
@@ -9,10 +10,10 @@ import javax.inject.Inject
  */
 abstract class ViewModelWithRepository : BaseViewModel{
 
-    @Inject
     lateinit var repository : IRepository
 
     constructor(){
+        repository = MyApplication.appComponent.repository()
     }
 
     constructor(repository : IRepository){
