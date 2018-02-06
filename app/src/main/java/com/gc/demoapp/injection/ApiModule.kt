@@ -19,10 +19,10 @@ class ApiModule {
 
     @AppScope
     @Provides
-    fun provideApi(client: OkHttpClient, gson: GsonConverterFactory) : Api {
+    fun provideApi(client: OkHttpClient) : Api {
         return Retrofit.Builder().client(client)
                 .baseUrl("https://dev-server-demos.herokuapp.com")
-                .addConverterFactory(gson)
+                .addConverterFactory(GsonConverterFactory.create())
 //                .addCallAdapterFactory(rxAdapter)
                 .build()
                 .create(Api::class.java)

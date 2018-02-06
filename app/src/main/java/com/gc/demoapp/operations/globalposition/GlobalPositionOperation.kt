@@ -11,4 +11,6 @@ class GlobalPositionOperation : Operation() {
 
     override fun Activity() : KClass<out BaseActivity> = AppActivity::class
 
+
+
 }

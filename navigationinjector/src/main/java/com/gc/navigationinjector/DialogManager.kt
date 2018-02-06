@@ -8,10 +8,6 @@ import android.view.*
 import android.widget.FrameLayout
 import android.widget.ProgressBar
 
-
-
-
-
 @SuppressLint("StaticFieldLeak")
 object DialogManager {
 
@@ -37,7 +33,7 @@ object DialogManager {
     }
 
     fun hideProgressDialog(activity : Activity) {
-        currentProgressDialog?.visibility
+        currentProgressDialog?.visibility = View.GONE
         activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 
@@ -54,19 +50,17 @@ object DialogManager {
                 .setMessage(message)
                 .setTitle(title ?: "")
                 .setPositiveButton(
-                        buttonAcceptText ?: activity.getString(R.string.accept),
-                        DialogInterface.OnClickListener(function = {_, _ ->
+                        buttonAcceptText ?: activity.getString(R.string.accept), {_, _ ->
                             hideDialog()
                             buttonAcceptListener?.onClick(null,0)
-                        })
+                        }
                 )
         if(buttonCancelText != null || buttonCancelText != null)
             builder.setNegativeButton(
-                    buttonAcceptText ?: activity.getString(R.string.cancel),
-                    DialogInterface.OnClickListener(function = {_, _ ->
+                    buttonAcceptText ?: activity.getString(R.string.cancel), {_, _ ->
                         hideDialog()
                         buttonCancelListener?.onClick(null,0)
-                    })
+                    }
             )
         currentDialog = builder.create()
         currentDialog?.show()

@@ -72,4 +72,8 @@ dependencies {
     provided 'javax.annotation:jsr250-api:1.0'
 
     implementation 'com.android.support:design:26.1.0'
+
+    kapt 'com.android.databinding:compiler:3.0.1'
+
+//    kapt 'com.android.databinding:compiler:3.0.0-alpha5'
 }

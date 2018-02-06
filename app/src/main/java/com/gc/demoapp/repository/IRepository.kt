@@ -8,6 +8,6 @@ import retrofit2.Response
  */
 interface IRepository {
 
-    fun doLogin(reuest : RequestLogin ) : Response<ResponseLogin>
+    fun doLogin(reuest : RequestLogin, callback : CustomCallBack<ResponseLogin> )
 
 }

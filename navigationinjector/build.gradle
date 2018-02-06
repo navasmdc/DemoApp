@@ -42,5 +42,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    kapt 'com.android.databinding:compiler:3.0.0-alpha5'
+    kapt 'com.android.databinding:compiler:3.0.1'
 }

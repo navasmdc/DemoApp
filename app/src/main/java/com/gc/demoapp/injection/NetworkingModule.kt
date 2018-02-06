@@ -15,41 +15,39 @@ class NetworkingModule {
 
     @AppScope
     @Provides
-    internal fun provideHttpClient(interceptor : Interceptor, cache: Cache): OkHttpClient {
+    internal fun provideHttpClient(interceptor : Interceptor): OkHttpClient {
         return OkHttpClient().newBuilder()
                 .addInterceptor(interceptor)
-                .cache(cache)
+
+//                .cache(cache)
                 .build()
     }
 
     @AppScope
     @Provides
-    internal fun provideLoggingInterceptor(): Interceptor =
-        when(BuildConfig.FLAVOR){
-            "mock" -> MockInterceptor()
+    internal fun provideLoggingInterceptor(): Interceptor {
+        when (BuildConfig.FLAVOR) {
+            "mock" -> return MockInterceptor()
             else -> {
                 val httpLoggingInterceptor = HttpLoggingInterceptor()
                 httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-                httpLoggingInterceptor
+                return httpLoggingInterceptor
             }
         }
-
-    @AppScope
-    @Provides
-    internal fun provideCache(file: File): Cache {
-        return Cache(file, (10 * 10 * 1000).toLong())
     }
 
-    @AppScope
-    @Provides
-    internal fun provideCacheFile(context: Context): File {
-        return context.filesDir
-    }
+//    @AppScope
+//    @Provides
+//    internal fun provideCache(file: File): Cache {
+//        return Cache(file, (10 * 10 * 1000).toLong())
+//    }
+//
+//    @AppScope
+//    @Provides
+//    internal fun provideCacheFile(context: Context): File {
+//        return context.filesDir
+//    }
 
 
-    @Provides
-    internal fun provideGsonClient(): GsonConverterFactory {
-        return GsonConverterFactory.create()
-    }
 
 }
