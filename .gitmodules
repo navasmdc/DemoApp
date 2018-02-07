@@ -1,0 +1,6 @@
+[submodule "navigationinjector"]
+	path = navigationinjector
+	url = https://github.com/navasmdc/NavigationInjection.git
+[submodule "databindingadapters"]
+	path = databindingadapters
+	url = https://github.com/navasmdc/DataBindingAdapters.git

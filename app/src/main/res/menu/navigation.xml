@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<item android:id="@+id/itemGlobalPosition" android:icon="@drawable/ico_global_position" android:title="@string/menu_item_global_position"/>
+<item android:id="@+id/itemInfo" android:icon="@drawable/ico_info" android:title="@string/menu_item_info"/>
+
+</menu>

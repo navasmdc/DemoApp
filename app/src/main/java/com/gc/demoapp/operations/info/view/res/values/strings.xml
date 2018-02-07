@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tv_info">You can download the source from this repository</string>
+    <string name="tv_github_url">https://github.com/navasmdc/DemoApp</string>
+</resources>

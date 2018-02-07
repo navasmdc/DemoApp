@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tv_hello_product_list">Hello,</string>
+    <string name="hint_alias">Alias</string>
+    <string name="btn_product_detail_save">SAVE</string>
+</resources>
