@@ -1,6 +1,7 @@
 package com.gc.demoapp.operations.globalposition
 
 import com.gc.demoapp.AppActivity
+import com.gc.demoapp.MyStates
 import com.gc.navigationinjector.*
 import kotlin.reflect.KClass
 
@@ -10,6 +11,20 @@ import kotlin.reflect.KClass
 class GlobalPositionOperation : Operation() {
 
     override fun Activity() : KClass<out BaseActivity> = AppActivity::class
+
+    override fun onStateChanged(currentState : BaseState, nextState: BaseState, continueNavigation: () -> Unit) {
+
+        when(nextState as MyStates){
+            MyStates.PRODUCT_LIST-> {
+                if(currentState == MyStates.LOGIN){
+                    
+                }else continueNavigation()
+            }
+            else -> continueNavigation()
+        }
+
+    }
+
 
 
 

@@ -10,7 +10,9 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/background_material_dark">
+
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline"
@@ -34,7 +36,9 @@
                 android:id="@+id/ed_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint" />
+                android:text="@={viewModel.requestLogin.user}"
+                android:textColor="@android:color/white"
+                android:hint="@string/hint_et_login_user" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -52,7 +56,9 @@
                 android:id="@+id/ed_pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint" />
+                android:text="@={viewModel.requestLogin.password}"
+                android:textColor="@android:color/white"
+                android:hint="@string/hint_et_login_password" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
@@ -63,7 +69,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:onClick="@{viewModel.doLogin}"
-            android:text="Button"
+            android:background="@color/accent_material_dark"
+            android:text="@string/btn_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline" />

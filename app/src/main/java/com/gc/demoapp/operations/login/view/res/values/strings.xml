@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--<string name="error_login_message">User and Password are invalid</string>-->
+    <string name="hint_et_login_user">User</string>
+    <string name="hint_et_login_password">Password</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="error_login_message">User and Password are invalid</string>
 </resources>

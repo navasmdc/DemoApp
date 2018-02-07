@@ -47,7 +47,7 @@ open abstract class BaseActivity : AppCompatActivity(), NavigationManager {
         var nextOperation = currentOperation
         if(!currentOperation.javaClass.equals(state.Operation()))
             nextOperation = state.Operation().java.newInstance()
-        nextOperation.onStateChanged {
+        nextOperation.onStateChanged(currentState, state, {
             if(!javaClass.equals(state.Activity().java) && !state.Activity().java.equals(Default::class.java)){
                 val intent = Intent(this, state.Activity().java)
                 intent.putExtra(NEXT_STATE, (state as Enum<*>).name)
@@ -63,7 +63,8 @@ open abstract class BaseActivity : AppCompatActivity(), NavigationManager {
                         .replace(getFragmentContainer(),currentFragment)
                         .commitNowAllowingStateLoss()
             }
-        }
+            currentState  = state
+        })
     }
 
     //endregion

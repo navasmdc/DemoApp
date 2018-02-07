@@ -4,7 +4,7 @@ import kotlin.reflect.KClass
 
 abstract class Operation {
 
-    fun onStateChanged(continueNavigation : () -> Unit){
+    open fun onStateChanged(currentState : BaseState, nextState: BaseState, continueNavigation : () -> Unit){
         continueNavigation()
     }
 
