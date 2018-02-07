@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.gc.demoapp.operations.login.viewmodel.LoginViewModel" />
+            type="com.gc.demoapp.operations.info.viewmodel.InfoViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -14,74 +14,40 @@
         android:background="@color/background_material_dark">
 
 
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5" />
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/lip_user"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toTopOf="@id/lip_pass"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/ed_user"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@={viewModel.requestLogin.user}"
-                app:addTextChangedListener="@{viewModel.textChangedListenr}"
-                android:textColorHint="#c1c2c4"
-                android:inputType="textFilter"
-                android:digits="ABCDEFGHIJKLMNÑOPQRSTUVWXYZ01234567890"
-                android:textColor="@android:color/white"
-                android:hint="@string/hint_et_login_user" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/lip_pass"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toTopOf="@id/guideline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/ed_pass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@={viewModel.requestLogin.password}"
-                app:addTextChangedListener="@{viewModel.textChangedListenr}"
-                android:maxLength="4"
-                android:textColorHint="#c1c2c4"
-                android:inputType="numberPassword"
-                android:textColor="@android:color/white"
-                android:hint="@string/hint_et_login_password" />
-        </android.support.design.widget.TextInputLayout>
-
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:onClick="@{viewModel.doLogin}"
-            android:enabled="@{viewModel.buttonEnabled}"
-            android:background="@color/accent_material_dark"
-            android:text="@string/btn_login"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="64dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ico_github" />
+
+        <TextView
+            android:id="@+id/tvInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/tv_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/tvURL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:linksClickable="true"
+            android:text="@string/tv_github_url"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvInfo"
+            android:onClick="@{viewModel.openLink}"/>
+
+
     </android.support.constraint.ConstraintLayout>
 </layout>

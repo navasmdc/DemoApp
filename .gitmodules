@@ -1,0 +1,3 @@
+[submodule "navigationinjector"]
+	path = navigationinjector
+	url = https://github.com/navasmdc/NavigationInjection.git

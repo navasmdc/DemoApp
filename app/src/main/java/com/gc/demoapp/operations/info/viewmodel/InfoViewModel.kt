@@ -1,42 +1,21 @@
-package com.gc.demoapp.operations.login.viewmodel
+package com.gc.demoapp.operations.info.viewmodel
 
-import android.databinding.ObservableBoolean
-import android.support.design.widget.*
 import android.view.View
-import android.widget.EditText
-import com.gc.demoapp.*
-import com.gc.demoapp.repository.*
-import com.gc.demoapp.repository.model.RequestLogin
-import com.gc.demoapp.utils.*
+import com.gc.demoapp.R
 import com.gc.navigationinjector.BaseViewModel
+import android.support.v4.content.ContextCompat.startActivity
+import android.content.Intent
+import android.net.Uri
 
-class LoginViewModel : ViewModelWithRepository {
 
-    constructor()
+class InfoViewModel : BaseViewModel() {
 
-    constructor(repository : IRepository)
 
-    override fun getLayout() : Int = R.layout.login_state
+    override fun getLayout() : Int = R.layout.info_state
 
-    val requestLogin = RequestLogin()
 
-    var buttonEnabled = ObservableBoolean(false)
-
-    var textChangedListenr = TextChangedListener(textChanged = {
-        validateUserAndPass()
-    })
-
-    fun validateUserAndPass(){
-        buttonEnabled.set(requestLogin.user.isUserValid() && requestLogin.password.isPasswordValid())
-    }
-
-    fun doLogin(v : View){
-        viewManager.showProgressDialog()
-        val response = repository.doLogin(requestLogin, CustomCallBack {
-            viewManager.hideProgressDialog()
-            if(it.isSuccessful) navigationManager.navigateTo(MyStates.PRODUCT_LIST)
-            else viewManager.showDialog("Error")
-        })
+    fun openLink(v : View){
+        viewManager.launchActivity(Intent(Intent.ACTION_VIEW, Uri.parse(viewManager.getString(R.string.tv_github_url))))
     }
 
 

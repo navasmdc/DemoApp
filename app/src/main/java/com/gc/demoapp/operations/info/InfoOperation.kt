@@ -1,14 +1,11 @@
 package com.gc.demoapp.operations.login
 
-import com.gc.demoapp.AppActivity
+import com.gc.demoapp.PrivateActivity
 import com.gc.navigationinjector.*
 import kotlin.reflect.KClass
 
-/**
- * Created by 674756 on 05/02/2018.
- */
-class LoginOperation : Operation() {
+class InfoOperation : Operation() {
 
-    override fun Activity() : KClass<out BaseActivity> = AppActivity::class
+    override fun Activity() : KClass<out BaseActivity> = PrivateActivity::class
 
 }
