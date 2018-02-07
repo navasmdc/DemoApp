@@ -9,7 +9,7 @@ class GlobalPositionOperation : Operation() {
 
     val repository : IRepository = MyApplication.appComponent.repository()
 
-    override fun Activity() : KClass<out BaseActivity> = AppActivity::class
+    override fun Activity() : KClass<out BaseActivity> = PrivateActivity::class
 
     override fun onStateChanged(currentState : BaseState, nextState: BaseState, continueNavigation: () -> Unit) {
 

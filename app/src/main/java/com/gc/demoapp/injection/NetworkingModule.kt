@@ -27,7 +27,7 @@ class NetworkingModule {
     @Provides
     internal fun provideLoggingInterceptor(): Interceptor {
         when (BuildConfig.FLAVOR) {
-            "mock" -> return MockInterceptor()
+            "mock" -> return MockInterceptor
             else -> {
                 val httpLoggingInterceptor = HttpLoggingInterceptor()
                 httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY

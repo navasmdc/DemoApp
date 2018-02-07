@@ -1,0 +1,45 @@
+{
+  "name": "Pepe Gotera",
+  "accounts": [{
+    "IBAN": "ES 69 00730100550400528076",
+    "alias": "Cuenta Corriente Ope",
+    "balance": {
+      "value": "+100.87",
+      "currency": "EUR"
+    }
+  },
+    {
+      "IBAN": "ES 13 00730100510575084660",
+      "alias": "C.C.OPERATIVA",
+      "balance": {
+        "value": "+0.00",
+        "currency": "EUR"
+      }
+    },
+    {
+      "IBAN": "ES 13 00730100510875084770",
+      "alias": "Compras Online",
+      "balance": {
+        "value": "-35.00",
+        "currency": "EUR"
+      }
+    }
+  ],
+  "cards": [{
+    "pan": "4511 2603 0019 9506",
+    "alias": "Visa Classic",
+    "avalaible": {
+      "value": "+300.00",
+      "currency": "EUR"
+    }
+  },
+    {
+      "pan": "4511 2701 1024 5910",
+      "alias": "Visa Oro",
+      "avalaible": {
+        "value": "-471.33",
+        "currency": "EUR"
+      }
+    }
+  ]
+}

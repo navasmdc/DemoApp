@@ -6,7 +6,7 @@ import com.gc.demoapp.repository.model.*
 open class Repository(var api : Api) : IRepository {
 
 
-    lateinit var tokenCredential : String
+    var tokenCredential : String = ""
 
     override var globalPosition : GlobalPosition? = null
 

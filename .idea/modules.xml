@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/DemoApp.iml" filepath="$PROJECT_DIR$/DemoApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/databinidingadapters/databinidingadapters.iml" filepath="$PROJECT_DIR$/databinidingadapters/databinidingadapters.iml" />
+      <module fileurl="file://$PROJECT_DIR$/databinidingadapters/databinidingadapters.iml" filepath="$PROJECT_DIR$/databinidingadapters/databinidingadapters.iml" />
       <module fileurl="file://$PROJECT_DIR$/navigationinjector/navigationinjector.iml" filepath="$PROJECT_DIR$/navigationinjector/navigationinjector.iml" />
     </modules>
   </component>

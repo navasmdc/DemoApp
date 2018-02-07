@@ -11,14 +11,12 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.gc.demoapp.*
 import com.gc.navigationinjector.BaseActivity
+import com.gc.navigationinjector.DialogManager
 import org.hamcrest.CoreMatchers
 import org.hamcrest.CoreMatchers.not
 import org.junit.*
 import org.junit.runner.RunWith
 
-/**
- * Created by 674756 on 07/02/2018.
- */
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class LoginScreenTest {
@@ -41,41 +39,54 @@ class LoginScreenTest {
     }
 
 
-    @Test fun `Input invalid user disabled login button`(){
+    @Test fun Input_invalid_user_disabled_login_button(){
+        // Input the invalid user
         onView(withId(R.id.ed_user))
                 .perform(typeText(WRONG_USER))
+        // Input the password
         onView(withId(R.id.ed_pass))
-                .perform(typeText(PASSWORD))
+                .perform(typeText(PASSWORD), closeSoftKeyboard())
+        // Check if the button keeps disabled
         onView(withId(R.id.btn_login))
                 .check(matches(not(isEnabled())))
     }
 
-    @Test fun `Input invalid password disabled login button`(){
+    @Test fun Input_invalid_password_disabled_login_button(){
+        // Input the  user
         onView(withId(R.id.ed_user))
                 .perform(typeText(USER))
+        // Input the invalid password
         onView(withId(R.id.ed_pass))
-                .perform(typeText(WRONG_PASSWORD))
+                .perform(typeText(WRONG_PASSWORD), closeSoftKeyboard())
+        // Check if the button keeps disabled
         onView(withId(R.id.btn_login))
                 .check(matches(not(isEnabled())))
     }
 
-    @Test fun `Input valid user and password enabled login button`(){
+    @Test fun Input_valid_user_and_password_enabled_login_button(){
+        // Input the  user
         onView(withId(R.id.ed_user))
                 .perform(typeText(USER))
+        // Input the invalid password
         onView(withId(R.id.ed_pass))
-                .perform(typeText(PASSWORD))
+                .perform(typeText(PASSWORD), closeSoftKeyboard())
+        // Check if the button is enabled
         onView(withId(R.id.btn_login))
                 .check(matches(isEnabled()))
     }
 
-    @Test fun `Input valid user and password enabled and click login button do login`(){
+    @Test fun Input_valid_user_and_password_enabled_and_click_login_button_do_login(){
+        // Input the  user
         onView(withId(R.id.ed_user))
                 .perform(typeText(USER))
+        // Input the invalid password
         onView(withId(R.id.ed_pass))
-                .perform(typeText(PASSWORD))
+                .perform(typeText(PASSWORD), closeSoftKeyboard())
+        // CLick the button
         onView(withId(R.id.btn_login))
                 .perform(click())
-        onView(withId(R.id.tvUserName))
+        // Check if the progress bar was displayed because the call to the webservice was called
+        onView(withId(DialogManager.PROGRESS_ID))
                 .check(matches(isDisplayed()))
     }
 

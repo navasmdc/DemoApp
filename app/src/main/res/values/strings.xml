@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DemoApp</string>
+    <string name="menu_item_global_position">Global position</string>
+    <string name="menu_item_info">Info</string>
 </resources>

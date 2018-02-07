@@ -6,7 +6,7 @@ import java.nio.charset.Charset
 /**
  * Created by 674756 on 05/02/2018.
  */
-class MockInterceptor : Interceptor {
+object MockInterceptor : Interceptor {
 
     var responsesMockFiles : MutableList<String> = ArrayList<String>()
 
@@ -26,6 +26,9 @@ class MockInterceptor : Interceptor {
                 .code(200)
                 .message(body)
                 .request(chain?.request())
+                .protocol(Protocol.HTTP_1_1)
+                .body(ResponseBody.create(MediaType.parse("application/json"), body.toByteArray()))
+                .addHeader("content-type", "application/json")
                 .build()
 
 
