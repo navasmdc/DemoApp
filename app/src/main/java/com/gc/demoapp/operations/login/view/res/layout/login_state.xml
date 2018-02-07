@@ -37,6 +37,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@={viewModel.requestLogin.user}"
+                app:addTextChangedListener="@{viewModel.textChangedListenr}"
+                android:textColorHint="#c1c2c4"
+                android:inputType="textFilter"
+                android:digits="ABCDEFGHIJKLMNÑOPQRSTUVWXYZ01234567890"
                 android:textColor="@android:color/white"
                 android:hint="@string/hint_et_login_user" />
         </android.support.design.widget.TextInputLayout>
@@ -57,18 +61,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@={viewModel.requestLogin.password}"
+                app:addTextChangedListener="@{viewModel.textChangedListenr}"
+                android:maxLength="4"
+                android:textColorHint="#c1c2c4"
+                android:inputType="numberPassword"
                 android:textColor="@android:color/white"
                 android:hint="@string/hint_et_login_password" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_login"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:onClick="@{viewModel.doLogin}"
+            android:enabled="@{viewModel.buttonEnabled}"
             android:background="@color/accent_material_dark"
             android:text="@string/btn_login"
             app:layout_constraintEnd_toEndOf="parent"

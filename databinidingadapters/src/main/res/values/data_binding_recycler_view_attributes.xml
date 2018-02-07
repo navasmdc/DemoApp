@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DataBindingRecyclerView">
+        <attr name="recyclerItemLayout" format="reference"/>
+        <attr name="columns" format="integer"/>
+        <attr name="type" format="enum">
+            <enum name="VERTICAL" value="0" />
+            <enum name="HORIZONTAL" value="1" />
+            <enum name="GRID" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

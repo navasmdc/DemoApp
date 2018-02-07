@@ -1,6 +1,6 @@
 package com.gc.demoapp.repository.model
 
-import com.gc.demoapp.utils.format
+import com.gc.demoapp.utils.*
 
 data class Card(
     var alias : String,
@@ -10,7 +10,13 @@ data class Card(
 
     override fun getName() : String = alias
 
+    override fun setName(name : String){ alias = name}
+
     override fun getNumber() : String = pan
 
-    override fun getAmount() : String = avalaible.format()
+    override fun getAmount() : Double = avalaible.value
+
+    override fun getAmountFormat() : String = avalaible.format()
+
+    override fun isAmountNegative() : Boolean = avalaible.value.isNegative()
 }

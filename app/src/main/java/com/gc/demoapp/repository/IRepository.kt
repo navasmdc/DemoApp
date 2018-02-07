@@ -8,6 +8,11 @@ import retrofit2.Response
  */
 interface IRepository {
 
+    var globalPosition : GlobalPosition?
+    var selectedProduct : Product?
+
     fun doLogin(reuest : RequestLogin, callback : CustomCallBack<ResponseLogin> )
+
+    fun doGetGlobalPosition(callBack : CustomCallBack<GlobalPosition>)
 
 }

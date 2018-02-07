@@ -14,7 +14,7 @@ object DialogManager {
     const val PROGRESS_ID = 123
 
     var currentDialog : Dialog? = null
-    var currentProgressDialog : View? = null
+    var currentProgressDialog : ProgressBar? = null
 
     fun showProgress(activity : Activity
     ) {
@@ -22,9 +22,12 @@ object DialogManager {
         currentProgressDialog = rootView.findViewById(PROGRESS_ID)
         if(currentProgressDialog != null) currentProgressDialog?.visibility = View.VISIBLE
         else{
-            currentProgressDialog = ProgressBar(activity, null, android.R.attr.progressBarStyleLarge)
+            currentProgressDialog = ProgressBar(activity, null, android.R.attr.progressBarStyleHorizontal)
+            currentProgressDialog?.max = 100
+            currentProgressDialog?.isIndeterminate = true
             currentProgressDialog?.id = PROGRESS_ID
             rootView.addView(currentProgressDialog)
+            currentProgressDialog?.y = 20f
         }
         activity.window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                 WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
