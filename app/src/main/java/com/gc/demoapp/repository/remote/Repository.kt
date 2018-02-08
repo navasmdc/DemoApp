@@ -12,17 +12,17 @@ open class Repository(var api : Api) : IRepository {
 
     override var selectedProduct : Product? = null
 
-    override fun doLogin(reuest : RequestLogin, callback : CustomCallBack<ResponseLogin>) {
-        api.doLogin(reuest).enqueue(CustomCallBack<ResponseLogin>(action = {
-            if(it.isSuccessful) tokenCredential = it.body()?.tokenCredential!!
-            callback.action(it)
+    override fun doLogin(reuest : RequestLogin?, callback : CustomCallBack<ResponseLogin?>?) {
+        api.doLogin(reuest!!).enqueue(CustomCallBack<ResponseLogin?>(action = {
+            if(it != null && it.isSuccessful) tokenCredential = it.body()?.tokenCredential!!
+            callback?.action?.invoke(it)
         }))
     }
 
-    override fun doGetGlobalPosition(callBack : CustomCallBack<GlobalPosition>) {
-        api.getGlobalPosition(tokenCredential).enqueue(CustomCallBack<GlobalPosition>(action = {
-            if(it.isSuccessful) globalPosition = it.body()
-            callBack.action(it)
+    override fun doGetGlobalPosition(callBack : CustomCallBack<GlobalPosition?>?) {
+        api.getGlobalPosition(tokenCredential).enqueue(CustomCallBack<GlobalPosition?>(action = {
+            if(it != null && it.isSuccessful) globalPosition = it.body()
+            callBack?.action?.invoke(it)
         }))
     }
 

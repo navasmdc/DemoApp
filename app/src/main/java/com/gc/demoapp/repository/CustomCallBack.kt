@@ -6,7 +6,7 @@ import retrofit2.*
 /**
  * Created by 674756 on 06/02/2018.
  */
-class CustomCallBack<T>(var action : (Response<T>) -> Unit ) : Callback<T> {
+class CustomCallBack<T>(var action : (Response<T>?) -> Unit ) : Callback<T> {
 
     override fun onFailure(call : Call<T>?,
                            t : Throwable?

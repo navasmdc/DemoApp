@@ -45,7 +45,7 @@ class ProductDetailScreenTest {
     fun setupTest(){
         // Prepare the repository for the test
         MyApplication.appComponent.repository().doGetGlobalPosition(CustomCallBack {
-            MyApplication.appComponent.repository().selectedProduct = it.body()!!.accounts[2]
+            MyApplication.appComponent.repository().selectedProduct = it?.body()!!.accounts[2]
             var intent = Intent()
             intent.putExtra(BaseActivity.NEXT_STATE, MyStates.PRODUCT_DETAIL.name)
             Thread({activity.launchActivity(intent)}).start()

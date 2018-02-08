@@ -16,7 +16,7 @@ class GlobalPositionOperation : Operation() {
         when(nextState as MyStates){
             MyStates.PRODUCT_LIST-> {
                 if(currentState == MyStates.LOGIN){
-                    repository.doGetGlobalPosition(CustomCallBack { if(it.isSuccessful) continueNavigation()})
+                    repository.doGetGlobalPosition(CustomCallBack { if(it != null && it.isSuccessful) continueNavigation()})
                 }else continueNavigation()
             }
             else -> continueNavigation()

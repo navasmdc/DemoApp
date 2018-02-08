@@ -86,7 +86,7 @@ class LoginScreenTest {
         onView(withId(R.id.btn_login))
                 .perform(click())
         // Check if the progress bar was displayed because the call to the webservice was called
-        onView(withId(DialogManager.PROGRESS_ID))
+        onView(withId(R.id.lvProducts))
                 .check(matches(isDisplayed()))
     }
 

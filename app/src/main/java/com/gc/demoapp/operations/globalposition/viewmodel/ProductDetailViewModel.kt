@@ -10,15 +10,21 @@ class ProductDetailViewModel : ViewModelWithRepository {
 
     constructor()
 
-    constructor(repository : IRepository)
+    constructor(repository : IRepository) : super(repository)
 
     override fun getLayout() : Int = R.layout.product_detail_state
 
+    var alias : String
     var selectedProduct : Product
 
     init {
         selectedProduct = repository.selectedProduct!!
+        alias = repository.selectedProduct!!.getName()
     }
 
-    fun saveProduct(v : View) = navigationManager.navigateTo(MyStates.PRODUCT_LIST)
+    fun saveProduct(v : View?) {
+        repository.selectedProduct!!.setName(alias)
+        navigationManager.navigateTo(MyStates.PRODUCT_LIST)
+    }
+
 }

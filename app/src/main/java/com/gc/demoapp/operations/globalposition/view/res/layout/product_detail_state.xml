@@ -47,25 +47,12 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/hint_alias"
                         android:inputType="textCapSentences"
-                        android:text="@={viewModel.selectedProduct.name}"
+                        android:text="@={viewModel.alias}"
                         android:textColor="@android:color/white"
                         android:textColorHint="#c1c2c4"
                         android:textSize="18sp"
                         tools:text="Cuenta de ahorro" />
                 </android.support.design.widget.TextInputLayout>
-
-                <!--<TextView-->
-                <!--android:id="@+id/textView"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginStart="8dp"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:text="@{viewModel.name}"-->
-                <!--android:textAppearance="@style/TextAppearance.AppCompat"-->
-                <!--android:textSize="18sp"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent"-->
-                <!--tools:text="Cuenta de ahorro" />-->
 
                 <TextView
                     android:id="@+id/textView2"

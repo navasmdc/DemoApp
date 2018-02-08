@@ -14,7 +14,7 @@ class InfoViewModel : BaseViewModel() {
     override fun getLayout() : Int = R.layout.info_state
 
 
-    fun openLink(v : View){
+    fun openLink(v : View?){
         viewManager.launchActivity(Intent(Intent.ACTION_VIEW, Uri.parse(viewManager.getString(R.string.tv_github_url))))
     }
 

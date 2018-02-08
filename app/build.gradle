@@ -28,11 +28,13 @@ android {
         }
     }
 
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
     productFlavors {
         mock {}
-        dummy {}
         prod {}
-        fake {}
     }
 
     flavorDimensions 'single'
@@ -61,7 +63,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.android.support:cardview-v7:26.1.0'
     implementation project(':navigationinjector')
-    implementation project(':databinidingadapters')
+    implementation project(':databindingadapters')
 
 
     // Retrofit 2
@@ -86,7 +88,8 @@ dependencies {
     // UNIT TESTS
     testImplementation 'junit:junit:4.12'
     testImplementation "org.mockito:mockito-core:2.13.0"
-    testImplementation "org.mockito:mockito-android:2.13.0"
+//    testImplementation "org.mockito:mockito-android:2.13.0"
+//    testCompile "com.nhaarman:mockito-kotlin-kt1.1:1.5.0"
 
     // UI TESTS
     // Android Testing Support Library's runner and rules
