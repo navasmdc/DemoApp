@@ -1,1 +1,1 @@
-include ':app', ':navigationinjector', ':databinidingadapters'
+include ':app', ':navigationinjector', ':databindingadapters'

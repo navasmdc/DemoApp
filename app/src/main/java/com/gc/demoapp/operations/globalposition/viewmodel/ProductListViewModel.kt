@@ -9,20 +9,22 @@ class ProductListViewModel : ViewModelWithRepository {
 
     constructor()
 
-    constructor(repository : IRepository)
+    constructor(repository : IRepository) : super(repository)
 
     override fun getLayout() : Int = R.layout.product_list_state
 
-    lateinit var userName : String
+    var userName : String? = null
 
     var products : MutableList<Product>
 
 
     init {
-        userName = repository.globalPosition!!.name
+        userName = repository.globalPosition?.name
         products = ArrayList()
-        products.addAll(repository.globalPosition!!.accounts)
-        products.addAll(repository.globalPosition!!.cards)
+        if(repository.globalPosition  != null && repository.globalPosition?.accounts != null)
+            products.addAll(repository.globalPosition!!.accounts)
+        if(repository.globalPosition  != null && repository.globalPosition?.cards != null)
+            products.addAll(repository.globalPosition!!.cards)
     }
 
     var itemClickListener = object  : OnItemClickListener<Product>{

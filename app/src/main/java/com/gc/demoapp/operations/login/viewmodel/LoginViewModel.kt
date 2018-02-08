@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.EditText
 import com.gc.demoapp.*
 import com.gc.demoapp.repository.*
-import com.gc.demoapp.repository.model.RequestLogin
+import com.gc.demoapp.repository.model.*
 import com.gc.demoapp.utils.*
 import com.gc.navigationinjector.BaseViewModel
 
@@ -14,7 +14,7 @@ class LoginViewModel : ViewModelWithRepository {
 
     constructor()
 
-    constructor(repository : IRepository)
+    constructor(repository : IRepository) : super(repository)
 
     override fun getLayout() : Int = R.layout.login_state
 
@@ -30,15 +30,16 @@ class LoginViewModel : ViewModelWithRepository {
         buttonEnabled.set(requestLogin.user.isUserValid() && requestLogin.password.isPasswordValid())
     }
 
-    fun doLogin(v : View){
+    fun doLogin(v : View?){
         viewManager.showProgressDialog()
-        val response = repository.doLogin(requestLogin, CustomCallBack {
-            viewManager.hideProgressDialog()
-            if(it.isSuccessful) navigationManager.navigateTo(MyStates.PRODUCT_LIST)
-            else viewManager.showDialog("Error")
-        })
+        repository.doLogin(requestLogin, requestCallback)
     }
 
+    var requestCallback = CustomCallBack<ResponseLogin?>( action = {
+            viewManager.hideProgressDialog()
+            if(it != null && it.isSuccessful) navigationManager.navigateTo(MyStates.PRODUCT_LIST)
+            else viewManager.showDialog("Error")
+        })
 
 
 

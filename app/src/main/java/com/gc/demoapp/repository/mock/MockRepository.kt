@@ -11,12 +11,12 @@ import com.gc.demoapp.repository.remote.Repository
  */
 class MockRepository(api : Api, var mockInterceptor : MockInterceptor) : Repository(api) {
 
-    override fun doLogin(reuest: RequestLogin, callback: CustomCallBack<ResponseLogin>) {
+    override fun doLogin(reuest: RequestLogin?, callback: CustomCallBack<ResponseLogin?>?) {
         MockInterceptor.addResponse("login.json")
         super.doLogin(reuest, callback)
     }
 
-    override fun doGetGlobalPosition(callBack: CustomCallBack<GlobalPosition>) {
+    override fun doGetGlobalPosition(callBack: CustomCallBack<GlobalPosition?>?) {
         MockInterceptor.addResponse("global_position.json")
         super.doGetGlobalPosition(callBack)
     }
